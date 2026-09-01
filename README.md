@@ -25,6 +25,20 @@ python -m aposeq.cli smoke-test --output-dir /tmp/aposeq_smoke
 
 Before running `process-bams`, edit the selected run config so `input.bam_directory` points to the real GridION unmerged BAM directory.
 
+## Bring Your Own Reference
+
+APO-SEQ is reference-configurable. Users should place their own assay FASTA in
+`reference_files/` and update the selected assay YAML so `reference.fasta`,
+`reference.chromosome`, and `reference.length` match the reference used to align
+their BAM files. Raw FASTA files are ignored by Git by default because they are
+often lab-specific.
+
+Check BAM contig names with:
+
+```bash
+samtools view -H sample.sorted.bam | grep '^@SQ'
+```
+
 Dry-run commands create manifests and exact command lines without running `samtools` or `bcftools`. This is the safest way to inspect a run before submitting work to Longleaf.
 
 The full runner records progress in `pipeline_state.json`. If a run stops, rerunning the same command resumes by skipping completed steps. Use `--no-resume` to ignore the state file and rerun requested steps.
@@ -99,6 +113,7 @@ config/
   assays/
     ebony.yaml
     pwa.yaml
+    pwa_delta2_3_transposase_negative.yaml
   runs/
     ebony_cas9_negative.yaml
     pwa_example.yaml

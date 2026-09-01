@@ -13,11 +13,18 @@ Results/
 *.err
 *.log
 
+# User/lab-specific reference sequences
+reference_files/*.fa
+reference_files/*.fasta
+reference_files/*.fna
+!reference_files/README.md
+
 # Local deployment bundles and temporary transfer files
 *.tar.gz
 *.b64
 .local_private/
 longleaf_bootstrap_aposeq.sh
+APO-SEQ/
 
 # macOS metadata
 .DS_Store
