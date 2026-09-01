@@ -1,0 +1,23 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+*.egg-info/
+.venv/
+venv/
+build/
+dist/
+
+# APO-SEQ generated outputs
+Results/
+*.out
+*.err
+*.log
+
+# Local deployment bundles and temporary transfer files
+*.tar.gz
+*.b64
+.local_private/
+longleaf_bootstrap_aposeq.sh
+
+# macOS metadata
+.DS_Store

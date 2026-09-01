@@ -1,0 +1,16 @@
+name: longleaf
+backend: slurm
+
+resources:
+  threads: 16
+  memory: 64G
+  time: "24:00:00"
+
+modules:
+  - samtools
+  - bcftools
+  - minimap2
+
+logging:
+  slurm_output: logs/slurm-%j.out
+  slurm_error: logs/slurm-%j.err

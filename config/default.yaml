@@ -1,0 +1,55 @@
+project:
+  name: APO-SEQ
+  version: 0.1.0
+
+alignment:
+  mapper: minimap2
+  recursive_bam_discovery: true
+  merge_bams: true
+  sort_bams: true
+  index_bams: true
+  mapq: 20
+
+variant_calling:
+  caller: bcftools
+  mpileup_base_quality: 10
+  call_mode: multiallelic
+
+analysis:
+  af_thresholds:
+    - 0.95
+    - 0.90
+    - 0.75
+    - 0.50
+    - 0.10
+  alt_count_thresholds:
+    - 10
+  deduplicate_positions: true
+  apobec_only: true
+
+motifs:
+  apobec:
+    enabled: true
+    motifs:
+      - TC
+      - GA
+
+plotting:
+  dpi: 600
+  formats:
+    - png
+    - pdf
+    - svg
+
+igv:
+  enabled: true
+  flank_size: 100
+  image_format: png
+  snapshot_width: 1600
+  snapshot_height: 900
+  maximum_snapshots: 500
+
+state:
+  enabled: true
+  filename: pipeline_state.json
+  resume_by_default: true

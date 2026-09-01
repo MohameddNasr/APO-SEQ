@@ -1,0 +1,26 @@
+name: pwa_example
+assay: pwa
+execution: longleaf
+
+input:
+  bam_directory: /path/to/GridION/unmerged_bams
+  barcode_regex: "(barcode[0-9]+)"
+  require_bam_index: false
+
+output:
+  directory: Results/pwa_example
+
+samples:
+  - barcode: barcode01
+    genotype: experimental
+    replicate: 1
+  - barcode: barcode02
+    genotype: control
+    replicate: 1
+
+overrides:
+  analysis:
+    af_thresholds:
+      - 0.95
+    alt_count_thresholds:
+      - 10

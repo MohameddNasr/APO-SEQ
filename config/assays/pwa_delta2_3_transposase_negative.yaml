@@ -1,0 +1,112 @@
+name: pwa_delta2_3_transposase_negative
+version: 1.0
+description: >
+  Delta2-3 transposase-negative P{wa} control assay configuration. Coordinates
+  are relative to the GridION P{wa}/scalloped/copia reference contig. This
+  control has no DSB positions because transposase is absent.
+
+reference:
+  name: GridION_pwa_scalloped_actual_copia_actual_flanks
+  fasta: reference_files/pwa_reference.fa
+  length: 37389
+  chromosome: GridION_pwa_scalloped_actual_copia_actual_flanks
+
+regions:
+  - id: left_outside_break
+    label: Left Outside Break
+    start: 1
+    end: 13533
+    color: "#D9D9D9"
+
+  - id: repair_interval
+    label: Repair Interval
+    start: 13534
+    end: 27632
+    color: "#E8F4EA"
+
+  - id: right_outside_break
+    label: Right Outside Break
+    start: 27633
+    end: 37389
+    color: "#D9D9D9"
+
+dsb:
+  positions: []
+
+plotting:
+  default_shaded_regions:
+    - left_outside_break
+    - right_outside_break
+  show_dsb: false
+  show_region_labels: true
+
+features:
+  - id: sd_left
+    label: Sd
+    start: 1
+    end: 13533
+    color: "#777777"
+  - id: p5
+    label: P 5 prime
+    start: 13534
+    end: 14120
+    color: "#4E79A7"
+  - id: w_plus
+    label: w+
+    start: 14121
+    end: 18133
+    color: "#E15759"
+  - id: left_ltr
+    label: Left LTR
+    start: 18134
+    end: 18409
+    color: "#59A14F"
+  - id: copia
+    label: Copia Element
+    start: 18410
+    end: 23003
+    color: "#F28E2B"
+  - id: right_ltr
+    label: Right LTR
+    start: 23004
+    end: 23279
+    color: "#59A14F"
+  - id: w_plus_right
+    label: w+
+    start: 23280
+    end: 27376
+    color: "#E15759"
+  - id: p3
+    label: P 3 prime
+    start: 27377
+    end: 27632
+    color: "#4E79A7"
+  - id: sd_right
+    label: Sd
+    start: 27633
+    end: 37389
+    color: "#777777"
+
+analysis:
+  default_af_thresholds:
+    - 0.95
+  default_alt_count: 10
+  deduplicate_positions: true
+
+igv:
+  enabled: true
+  flank_size: 100
+  selection:
+    mode:
+      - passing_mutations
+      - recurrent
+      - outside_expected_region
+    minimum_af: 0.95
+    minimum_alt_count: 10
+    apobec_only: true
+    maximum_snapshots: 500
+  display:
+    sort_alignments_by: base
+    color_alignments_by: strand
+    show_soft_clipped_bases: true
+    show_center_line: true

@@ -1,0 +1,30 @@
+name: pwa_delta2_3_transposase_negative
+assay: pwa_delta2_3_transposase_negative
+execution: longleaf
+
+input:
+  bam_directory: /path/to/GridION/run/bam_pass
+  barcode_regex: "(barcode[0-9]+)"
+  auto_discover_samples: true
+  default_genotype: delta2-3 transposase negative
+  require_bam_index: false
+
+output:
+  directory: Results/pwa_delta2_3_transposase_negative
+
+overrides:
+  analysis:
+    af_thresholds:
+      - 0.95
+    alt_count_thresholds:
+      - 10
+  igv:
+    selection:
+      mode:
+        - passing_mutations
+        - recurrent
+        - outside_expected_region
+      minimum_af: 0.95
+      minimum_alt_count: 10
+      apobec_only: true
+      maximum_snapshots: 500

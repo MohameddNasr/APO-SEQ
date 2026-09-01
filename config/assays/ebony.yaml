@@ -1,0 +1,63 @@
+name: ebony
+version: 1.0
+description: >
+  Amplicon assay for sequencing the ebony locus following CRISPR-mediated
+  repair. Coordinates are relative to ebony4.2kb_ref.
+
+reference:
+  name: ebony4.2kb_ref
+  fasta: reference_files/ebony4.2kb_ref.flyPatched.fa
+  length: 27383
+  chromosome: ebony4.2kb_ref
+
+regions:
+  - id: left_flank
+    label: Left Flank
+    start: 1
+    end: 8100
+    color: "#D9D9D9"
+
+  - id: gap
+    label: Gap
+    start: 8101
+    end: 12310
+    color: "#E8F4EA"
+
+  - id: right_flank
+    label: Right Flank
+    start: 12311
+    end: 27383
+    color: "#D9D9D9"
+
+dsb:
+  positions: []
+
+plotting:
+  default_shaded_regions:
+    - gap
+  show_dsb: true
+  show_region_labels: true
+
+analysis:
+  default_af_thresholds:
+    - 0.95
+  default_alt_count: 10
+  deduplicate_positions: true
+
+igv:
+  enabled: true
+  flank_size: 100
+  selection:
+    mode:
+      - passing_mutations
+      - recurrent
+      - outside_expected_region
+    minimum_af: 0.95
+    minimum_alt_count: 10
+    apobec_only: true
+    maximum_snapshots: 500
+  display:
+    sort_alignments_by: base
+    color_alignments_by: strand
+    show_soft_clipped_bases: true
+    show_center_line: true

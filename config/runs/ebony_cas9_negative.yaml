@@ -1,0 +1,23 @@
+name: ebony_cas9_negative
+assay: ebony
+execution: longleaf
+
+input:
+  bam_directory: /path/to/GridION/unmerged_bams
+  barcode_regex: "(barcode[0-9]+)"
+  require_bam_index: false
+
+output:
+  directory: Results/ebony_cas9_negative
+
+samples:
+  - barcode: barcode01
+    genotype: Cas9-negative
+    replicate: 1
+
+overrides:
+  analysis:
+    af_thresholds:
+      - 0.95
+    alt_count_thresholds:
+      - 10

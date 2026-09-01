@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "aposeq"
+version = "0.1.0"
+description = "APOBEC-assisted sequencing analysis pipeline for GridION amplicon data."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "pandas>=2.0",
+  "matplotlib>=3.7",
+  "PyYAML>=6.0",
+]
+
+[project.scripts]
+aposeq = "aposeq.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["aposeq*"]
